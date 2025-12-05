@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<launchConfiguration type="org.eclipse.jdt.launching.localJavaApplication">
+    <listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_PATHS">
+        <listEntry value="/pb-b-condeminov/src/main/java/montresor/condeminov/ihm/MainIhmPbB.java"/>
+    </listAttribute>
+    <listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_TYPES">
+        <listEntry value="1"/>
+    </listAttribute>
+    <booleanAttribute key="org.eclipse.jdt.launching.ATTR_EXCLUDE_TEST_CODE" value="true"/>
+    <booleanAttribute key="org.eclipse.jdt.launching.ATTR_USE_START_ON_FIRST_THREAD" value="true"/>
+    <stringAttribute key="org.eclipse.jdt.launching.CLASSPATH_PROVIDER" value="org.eclipse.m2e.launchconfig.classpathProvider"/>
+    <stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="montresor.condeminov.ihm.MainIhmPbB"/>
+    <stringAttribute key="org.eclipse.jdt.launching.MODULE_NAME" value="pb-b-condeminov"/>
+    <stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="pb-b-condeminov"/>
+    <stringAttribute key="org.eclipse.jdt.launching.SOURCE_PATH_PROVIDER" value="org.eclipse.m2e.launchconfig.sourcepathProvider"/>
+    <stringAttribute key="org.eclipse.jdt.launching.VM_ARGUMENTS" value="-Xms1024m -Xmx2048m -Dlogback.configurationFile=${project_loc:pb-b-condeminov}/LOGBACK/logback.xml -DPB_B_CONDEMINOV_LOG_DIR=C:/Users/Public/baloo/logs -DAPPNAME=WIN_PbB_Condeminov"/>
+</launchConfiguration>
