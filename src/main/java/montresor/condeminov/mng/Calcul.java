@@ -88,22 +88,36 @@ public class Calcul {
 //		LOGGER.info("csNonDeductibles (valeur4b) = {}", csoNonDeductible);
 //		lOutputDataPbA.setCsoNonDeductible(csoNonDeductible);
 		
+
+		// ANCIEN CODE
+//		double valeur4b = assiette4 * (pInpuDataPbB.getRsm() / pInpuDataPbB.getRs()) *
+//				(ParamsPbB.getInstance().getAutresParams().getTauxCotisationSociale() / 100.0);
 		
-		double valeur4b = assiette4 * (pInpuDataPbB.getRsm() / pInpuDataPbB.getRs()) *
+		// NOUVEAU 06122025: DEBUT
+		double valeur4b = assiette4  *
 				(ParamsPbB.getInstance().getAutresParams().getTauxCotisationSociale() / 100.0);
+		// NOUVEAU 06122025: FIN 
+		
 		LOGGER.info("valeur4b = {}", valeur4b);
 		double valeur4a = pressionSociale - valeur4b;
 		LOGGER.info("valeur4a = {}", valeur4a);
 		LOGGER.info("valeur4 (pression sociale) = {}", pressionSociale);
 		double riCategorielDirigeant = pInpuDataPbB.getRti();
+		
 		if (pInpuDataPbB.isAvecPriseEnCharge() ) {
+			
+		
 			riCategorielDirigeant += valeur4b;
+			
 		} else {
 			riCategorielDirigeant -= pressionSociale;
 			
 		}
 		
 		//calcul du (11) Pression fiscale du dirigeant
+		
+		
+		
 		double riCategorielDirigeantPositif = riCategorielDirigeant;
 		if (riCategorielDirigeant < 0.0) {
 			riCategorielDirigeantPositif = 0.0; // demande du Compte le 16/02/2023
@@ -111,8 +125,18 @@ public class Calcul {
 		double pressionFiscaleRevenuHorsEurl = 
 				ParamsPbB.getInstance().getBaremeIrpp().getImpotDu((int)Math.round(pInpuDataPbB.getRevenuFiscalHorsEurl()),pInpuDataPbB.getNbParts(),0);
 
-		double pressionFiscaleTotaleDirigeant =
-				ParamsPbB.getInstance().getBaremeIrpp().getImpotDu((int)Math.round(pInpuDataPbB.getRevenuFiscalHorsEurl()+riCategorielDirigeantPositif),pInpuDataPbB.getNbParts(),0);
+		double pressionFiscaleTotaleDirigeant = ParamsPbB.getInstance().getBaremeIrpp().getImpotDu((int)Math.round(pInpuDataPbB.getRevenuFiscalHorsEurl()+riCategorielDirigeantPositif),pInpuDataPbB.getNbParts(),0);
+		if (pInpuDataPbB.isAvecPriseEnCharge() ) {
+			
+			double riCategorielAdmisAuBareme = riCategorielDirigeant + valeur4b;
+			if (riCategorielAdmisAuBareme > 14455.0) {
+				riCategorielAdmisAuBareme = riCategorielAdmisAuBareme - 14455.0;
+			} else {
+				riCategorielAdmisAuBareme = riCategorielAdmisAuBareme* 0.9;
+			}
+			pressionFiscaleTotaleDirigeant = ParamsPbB.getInstance().getBaremeIrpp().getImpotDu((int)Math.round(pInpuDataPbB.getRevenuFiscalHorsEurl()+riCategorielAdmisAuBareme),pInpuDataPbB.getNbParts(),0);
+			
+		}
 
 		double pressionFiscaleDirigeant = pressionFiscaleTotaleDirigeant - pressionFiscaleRevenuHorsEurl;
 		

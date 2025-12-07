@@ -506,8 +506,8 @@ public class IhmElems {
 		hbpn.setPadding(new Insets(0));
 		hbpn.setSpacing(30);
 
-		hbpn.getChildren().addAll(hbRti, hbRsm, hbRs, hbResAnnPrec);
-
+//		hbpn.getChildren().addAll(hbRti, hbRsm, hbRs, hbResAnnPrec);
+		hbpn.getChildren().addAll(hbRti,  hbResAnnPrec);
 		return (hbpn);
 
 	}
