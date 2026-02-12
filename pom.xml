@@ -5,7 +5,7 @@
 
 	<groupId>condeminov.finance.medical</groupId>
 	<artifactId>pb-b-le-compte</artifactId>
-	<version>1.0.7</version>
+	<version>1.0.8</version>
 	<name>pb-b-le-compte</name>
 	<description>pb-b-condeminov</description>
 	<properties>
